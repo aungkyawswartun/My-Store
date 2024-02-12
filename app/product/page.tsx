@@ -35,7 +35,7 @@ export default function ProductPage() {
     };
 
     return (
-        <IonPage>
+            <IonPage>
             <IonHeader>
                 <IonToolbar>
                     <IonTitle>Product List</IonTitle>
