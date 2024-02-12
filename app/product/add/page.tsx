@@ -12,6 +12,7 @@ import {
 } from "@ionic/react";
 import axios from "axios";
 import React, { useRef } from "react";
+import NoSSR from "../components/NoSSR";
 
 export default function page() {
     const nameRef = useRef<HTMLIonInputElement>(null);
@@ -41,47 +42,51 @@ export default function page() {
     };
     return (
         <div>
-            <IonPage>
-                <IonHeader>
-                    <IonToolbar>
+            <NoSSR>
+                <IonPage>
+                    <IonHeader>
                         <IonToolbar>
-                            <IonTitle>Add Product</IonTitle>
-                            <IonButtons slot="end">
-                                <IonButton onClick={handleSave}>Save</IonButton>
-                            </IonButtons>
+                            <IonToolbar>
+                                <IonTitle>Add Product</IonTitle>
+                                <IonButtons slot="end">
+                                    <IonButton onClick={handleSave}>
+                                        Save
+                                    </IonButton>
+                                </IonButtons>
+                            </IonToolbar>
                         </IonToolbar>
-                    </IonToolbar>
-                </IonHeader>
-                <IonContent>
-                    <IonItem>
-                        <IonInput
-                            type="text"
-                            label="Name"
-                            labelPlacement="stacked"
-                            placeholder="Name"
-                            ref={nameRef}
-                        />
-                    </IonItem>
-                    <IonItem>
-                        <IonInput
-                            type="number"
-                            label="Buy Price"
-                            labelPlacement="stacked"
-                            placeholder="Buy Price"
-                            ref={buyPriceRef}
-                        />
-                    </IonItem>
-                    <IonItem>
-                        <IonInput
-                            type="number"
-                            label="Sell Price"
-                            labelPlacement="stacked"
-                            placeholder="Sell Price"
-                            ref={sellPriceRef}
-                        />
-                    </IonItem>
-                </IonContent>
-            </IonPage>
+                    </IonHeader>
+                    <IonContent>
+                        <IonItem>
+                            <IonInput
+                                type="text"
+                                label="Name"
+                                labelPlacement="stacked"
+                                placeholder="Name"
+                                ref={nameRef}
+                            />
+                        </IonItem>
+                        <IonItem>
+                            <IonInput
+                                type="number"
+                                label="Buy Price"
+                                labelPlacement="stacked"
+                                placeholder="Buy Price"
+                                ref={buyPriceRef}
+                            />
+                        </IonItem>
+                        <IonItem>
+                            <IonInput
+                                type="number"
+                                label="Sell Price"
+                                labelPlacement="stacked"
+                                placeholder="Sell Price"
+                                ref={sellPriceRef}
+                            />
+                        </IonItem>
+                    </IonContent>
+                </IonPage>
+            </NoSSR>
         </div>
     );
 }

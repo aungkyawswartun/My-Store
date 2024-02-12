@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
@@ -12,6 +12,7 @@ import {
     IonButton,
     IonToolbar,
 } from "@ionic/react";
+import NoSSR from "./components/NoSSR";
 
 export default function ProductPage() {
     const [products, setProducts] = useState<any>([]);
@@ -36,23 +37,27 @@ export default function ProductPage() {
 
     return (
             <IonPage>
-            <IonHeader>
-                <IonToolbar>
-                    <IonTitle>Product List</IonTitle>
-                </IonToolbar>
-            </IonHeader>
-            <IonContent>
-                {products.map((item: any, index: number) => (
-                    <IonItem key={index}>
-                        {item?.Name}
-                        <IonButtons slot="end">
-                            <IonButton onClick={() => handleDelete(item)}>
-                                Delete
-                            </IonButton>
-                        </IonButtons>
-                    </IonItem>
-                ))}
-            </IonContent>
-        </IonPage>
+                <IonHeader>
+                    <IonToolbar>
+                        <IonTitle>Product List</IonTitle>
+                    </IonToolbar>
+                </IonHeader>
+                <IonContent>
+                    <NoSSR>
+                        {products.map((item: any, index: number) => (
+                            <IonItem key={index}>
+                                {item?.Name}
+                                <IonButtons slot="end">
+                                    <IonButton
+                                        onClick={() => handleDelete(item)}
+                                    >
+                                        Delete
+                                    </IonButton>
+                                </IonButtons>
+                            </IonItem>
+                        ))}
+                    </NoSSR>
+                </IonContent>
+            </IonPage>
     );
 }
